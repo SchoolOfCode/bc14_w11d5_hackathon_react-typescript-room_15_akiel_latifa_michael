@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-import TemperatureInfo from '../TemperatureInfo/TemperatureInfo';
-// import getTemperatureInfo from '../TemperatureInfo/TemperatureInfo';
+import './WeatherDisplay.css'
+import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
+import SearchForm from '../SearchForm/SearchForm';
+
+
 
 
 
 
 function App() {
-  const [searchLocation,setSearchLocation]= useState<string>("Rome")
+  const [searchLocation, setSearchLocation] = useState<string>("");
+  const [showWeather, setShowWeather] = useState<boolean>(false);
 
-// console.log(searchLocation)
-
+  const handleSearch = () => {
+    console.log("handleSearch called");
+    setShowWeather(true);
+  };
 
   return (
     <div className="App">
-        <div>
-     <h1>Weather App</h1>
-     <input type ="text" name ={searchLocation} placeholder='Type City' onChange={event=>setSearchLocation(event.target.value)}></input>
-    <button>Search</button>
-    </div>
-    <div>
-      <h2>Location</h2>
+      <div>
+        <h1>Weather App</h1>
+        <SearchForm
+          searchLocation={searchLocation}
+          setSearchLocation={setSearchLocation}
+          handleSearch={handleSearch}
+        />
       </div>
-    <TemperatureInfo searchLocation={searchLocation}/>
+      <div>
+        <h2>Location</h2>
+      </div>
+      {showWeather && <WeatherDisplay searchLocation={searchLocation} />}
     </div>
   );
 }
 
 export default App;
+
