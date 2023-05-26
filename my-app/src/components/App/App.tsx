@@ -8,8 +8,9 @@ import SearchForm from '../SearchForm/SearchForm'
 
 
 
+
 function App() {
-  const [searchLocation,setSearchLocation]= useState<string>("Rome")
+  const [searchLocation,setSearchLocation]= useState<string>("")
   const [searchInput,setSearchInput]=useState<any>()
 
 // console.log(searchLocation)
@@ -35,7 +36,7 @@ function handleClick(){
     />
     <button onClick={handleClick}>Search</button>
  </div>
-;
+
       </div>
     <WeatherDisplay searchLocation={searchLocation}/>
     </div>

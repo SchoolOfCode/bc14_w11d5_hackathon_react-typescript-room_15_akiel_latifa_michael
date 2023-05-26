@@ -22,10 +22,10 @@ export default function AdditionalInfo ({WeatherDisplay}:AdditionalInfoProps) {
         <div>
           {WeatherDisplay && (
             <div>
-              <p>Feels Like: {WeatherDisplay.main.feels_like}</p>
-              <p>Min Temperature: {WeatherDisplay.main.temp_min}</p>
-              <p>Max Temperature: {WeatherDisplay.main.temp_max}</p>
-              <p>Humidity: {WeatherDisplay.main.humidity}</p>
+              <p>Feels Like:<br></br>{(WeatherDisplay.main.feels_like -272.15).toFixed(1)}°C</p>
+              <p>Min Temperature:<br></br>{(WeatherDisplay.main.temp_min -272.15).toFixed(1)}°C</p>
+              <p>Max Temperature:<br></br>{(WeatherDisplay.main.temp_max -272.15).toFixed(1)}°C</p>
+              <p>Humidity:<br></br>{WeatherDisplay.main.humidity}%</p>
             </div>
           )}
         </div>

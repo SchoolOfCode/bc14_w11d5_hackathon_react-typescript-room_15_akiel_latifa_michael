@@ -52,7 +52,7 @@ const convertKelvinToCelsius = (temperature: number) => {
 
 
 return (
-    <div className="Weather_Card">
+    <div className="WeatherDisplay_Card">
       {WeatherDisplay && WeatherDisplay.main && WeatherDisplay.weather ? (
         <div>
           <h2>{convertKelvinToCelsius(WeatherDisplay.main.temp)}°C</h2>
@@ -63,7 +63,7 @@ return (
           <AdditionalInfo WeatherDisplay={WeatherDisplay} />
         </div>
       ) : (
-          <p>Loading...</p>
+          <p></p>
           
           )}
     </div>
