@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TemperatureInfo from '../TemperatureInfo/TemperatureInfo';
+// import getTemperatureInfo from '../TemperatureInfo/TemperatureInfo';
 
 
 
@@ -9,7 +10,7 @@ import TemperatureInfo from '../TemperatureInfo/TemperatureInfo';
 function App() {
   const [searchLocation,setSearchLocation]= useState<string>("Rome")
 
-console.log(searchLocation)
+// console.log(searchLocation)
 
 
   return (
@@ -22,7 +23,7 @@ console.log(searchLocation)
     <div>
       <h2>Location</h2>
       </div>
-
+    <TemperatureInfo searchLocation={searchLocation}/>
     </div>
   );
 }
