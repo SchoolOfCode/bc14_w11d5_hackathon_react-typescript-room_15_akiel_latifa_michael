@@ -1,8 +1,22 @@
 import { get } from "http"
 import React, {useState, useEffect} from "react"
+import AdditionalInfo from "../AdditionalInfo/AdditionalInfo";
 
 type searchLocationProps = {
     searchLocation: string
+}
+interface WeatherData {
+  main: {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    humidity: number;
+  };
+  weather: {
+    icon: string;
+    description: string;
+  }[];
 }
 
 function WeatherDisplay(props:searchLocationProps){
@@ -14,7 +28,7 @@ console.log(searchLocation)
 // write api call here to get temperature info
 
 // make a usestate for saving temperature info
-const [WeatherDisplay, setWeatherDisplay] = React.useState<any>(null)
+const [WeatherDisplay, setWeatherDisplay] = useState<WeatherData | null>(null)
 
 // put everything in a useEffect
 useEffect(()=>{
@@ -38,7 +52,7 @@ const convertKelvinToCelsius = (temperature: number) => {
 
 
 return (
-    <div className="">
+    <div className="Weather_Card">
       {WeatherDisplay && WeatherDisplay.main && WeatherDisplay.weather ? (
         <div>
           <h2>{convertKelvinToCelsius(WeatherDisplay.main.temp)}°C</h2>
@@ -46,6 +60,7 @@ return (
             src={`http://openweathermap.org/img/wn/${WeatherDisplay.weather[0].icon}.png`}
             alt={WeatherDisplay.weather[0].description}
           />
+          <AdditionalInfo WeatherDisplay={WeatherDisplay} />
         </div>
       ) : (
           <p>Loading...</p>
@@ -59,4 +74,3 @@ return (
 
 
 export default WeatherDisplay
-//<AdditionalInfo temperatureInfo={WeatherDisplay} />
